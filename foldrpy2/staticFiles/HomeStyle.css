@@ -1,0 +1,41 @@
+.navbardiv {
+    display: block;
+    background-color: rgb(73, 73, 73);
+    height: 60px;
+}
+
+.navbar {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbaritem {
+    list-style: none;
+    float: left;
+    display: block;
+    padding: 10px 0px;
+    
+}
+
+.navbaritem a {
+    font-size: 200%;
+    list-style: none;
+    display: block;
+    padding: 10px 10px 10px 10px;
+    background-color: rgb(73, 73, 73);
+}
+
+.navbutton {
+    text-decoration: none;
+    font-weight: bold;
+    
+    transform: translateY(-10px);
+    color: rgb(39, 39, 39);
+}
+
+.navbaritem:hover a {
+    font-size: 260%;
+    background-color: darkgrey;
+}

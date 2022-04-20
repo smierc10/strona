@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<style>
+    .spoiler{  
+    background-color:black;
+        }
+        
+    .spoiler:hover { 
+    background-color:white; 
+        }
+</style>
+<html>
+    <body>
+        
+        <h2>nazwa użytkownika:{{username}}</h2>
+        <div style="display: flex;">
+            <p><h3>hasło:</h3></p>
+            <h3 class="spoiler" style="padding-left: 10px;">   Naprawdę chcesz wiedzieć? </h3>
+            <h3 class="spoiler" style="padding-left: 10px;">   Sorry nie ma opcji</h3>
+        </div>
+       
+        <form method="post">
+            <input type="email" name="email" placeholder="{{email}}" value="{{email}}">
+            <input type="submit">
+        </form>
+    </body>
+</html>

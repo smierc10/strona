@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>Chat Room</title>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<link rel="stylesheet" href="staticFiles/StyleChat.css">
+	</head>
+<body>
+<nav >
+	<a href="/" style="text-align:right; text-decoration:none;"><h2>Strona główna<h2></a>
+</nav>
+<p hidden id="1">{{us}}</p>
+
+
+	<script>
+
+	$(document).ready(function() {
+		
+		var socket = io.connect('http://127.0.0.1:5000/');
+		var data = document.getElementById("1").innerHTML;
+
+		socket.on('connect', function() {
+			socket.emit('requestforhistory');
+		});
+
+		socket.on('connect', function() {
+			socket.send(data +" has connected!");
+		});
+
+		
+
+
+		socket.on('message', function(msg) {
+			if ((String(msg).startsWith(data+" "))||(String(msg).startsWith(data+": "))) {
+				$("#messages").append('<div class="rightalign"><li class="message-author">'+msg+'</li></div>');
+			} 
+			else {
+				$("#messages").append('<li class="message">'+msg+'</li>');
+			}
+			console.log(String(msg).startsWith(data))
+		});
+
+		$('#sendbutton').on('click', function() {
+			if ($('#myMessage').val()!=='') {
+				socket.send(data+": "+$('#myMessage').val());
+				$('#myMessage').val('');
+			}	
+		});
+	});
+	</script>
+
+
+<ul id="messages"></ul>
+
+
+<form  action="#" onsubmit="">
+<input class="input" type="text" id="myMessage">
+<button class="sendbutton" id="sendbutton">&#10097&#10093&#10093</button>
+</form>
+
+</body>
+</html>
